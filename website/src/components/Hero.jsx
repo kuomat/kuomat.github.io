@@ -9,13 +9,13 @@ export default function Hero() {
                     <div className="hero-content">
                         <div className="hero-text">
                             <h1 id="hero-title" className="hero-name">Matthew Kuo</h1>
-                            <p className="hero-title">Making computers do cool thing</p>
+                            <p className="hero-title">I make computers do cool things</p>
                             <div className="hero-intro">
                                 <p className="hero-description">
                                     A senior at Penn studying Computer Science and Robotics.
                                 </p>
                                 <p className="hero-description">
-                                    At Amazon, I built AI-powered systems using Java and TypeScript that reduced ticket debugging time by 80%
+                                    At Amazon, I built a chatbot and MCP servers using Java and TypeScript that reduced ticket debugging time by 80%
                                     for our organization, and designed serverless pipelines that handle 350M+ daily transactions with minimal overhead.
                                 </p>
                                 <p className="hero-description">
@@ -42,6 +42,10 @@ export default function Hero() {
                                 <a href="https://github.com/kuomat" target="_blank" rel="noreferrer" className="hero-contact-link">
                                     <span className="hero-contact-icon">💻</span>
                                     <span className="hero-contact-label">GitHub</span>
+                                </a>
+                                <a href="/resume.pdf" target="_blank" rel="noreferrer" className="hero-contact-link">
+                                    <span className="hero-contact-icon">📄</span>
+                                    <span className="hero-contact-label">Resume</span>
                                 </a>
                             </div>
                         </div>
