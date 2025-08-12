@@ -145,7 +145,7 @@ button:focus-visible {
 
 /* Hero */
 .hero {
-  padding: 120px 0 160px;
+  padding: 60px 0 100px;
 }
 
 .hero-content {
@@ -164,9 +164,11 @@ button:focus-visible {
 
 .hero-image {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  gap: 24px;
 }
 
 .profile-photo {
@@ -188,6 +190,46 @@ button:focus-visible {
   box-shadow:
     0 35px 100px rgba(124, 92, 255, 0.2),
     0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-contact {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.hero-contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.2);
+  border-radius: 16px;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 70px;
+}
+
+.hero-contact-link:hover {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
+  border-color: rgba(124, 92, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(124, 92, 255, 0.3);
+}
+
+.hero-contact-icon {
+  font-size: 1.4rem;
+}
+
+.hero-contact-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
 }
 
 .hero-name {
@@ -346,16 +388,224 @@ button:focus-visible {
 }
 
 /* Skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+.section-subtitle {
+  color: var(--muted);
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0 0 64px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
-.subheading {
+.skills-grid-new {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.skill-category {
+  background: linear-gradient(135deg, var(--panel) 0%, rgba(16, 18, 23, 0.8) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  opacity: 0.8;
+}
+
+.skill-category::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.03) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(124, 92, 255, 0.2);
+  box-shadow:
+    0 20px 40px rgba(124, 92, 255, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.skill-category:hover::after {
+  opacity: 1;
+}
+
+.skill-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.skill-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--text) 0%, rgba(230, 230, 230, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.skill-tag {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.15);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(124, 92, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.15) 0%, rgba(0, 212, 255, 0.08) 100%);
+  border-color: rgba(124, 92, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.2);
+}
+
+.skill-tag:hover::before {
+  left: 100%;
+}
+
+@media (max-width: 768px) {
+  .skills-grid-new {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .skill-category {
+    padding: 28px;
+  }
+
+  .skill-category:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+/* Contact Section */
+.contact-section {
+  background: linear-gradient(135deg, var(--panel) 0%, rgba(16, 18, 23, 0.9) 100%);
+  border-top: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  opacity: 0.7;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(124, 92, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(124, 92, 255, 0.15);
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.contact-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
   margin: 0 0 8px;
-  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.contact-card p {
   color: var(--muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-card {
+    padding: 28px 20px;
+  }
 }
 
 /* Footer */
