@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Mail, Linkedin, Github, FileText } from 'lucide-react'
 
 export default function Hero() {
     return (
@@ -9,19 +9,15 @@ export default function Hero() {
                     <div className="hero-content">
                         <div className="hero-text">
                             <h1 id="hero-title" className="hero-name">Matthew Kuo</h1>
-                            <p className="hero-title">I make computers do cool things</p>
+                            <p className="hero-title">Incoming SWE @ Stripe | Deep Learning Researcher @ UPenn</p>
                             <div className="hero-intro">
                                 <p className="hero-description">
-                                    A senior at Penn studying Computer Science and Robotics.
+                                    At Penn, I'm working with Prof. Mayur Naik on computer vision for robotics. We developed SGClip,
+                                    a model that helps robots understand complex visual scenes by generating structured representations.
+                                    This work is a <strong>NeurIPS 2025 Spotlight</strong> paper — <a href="https://video-fm.github.io/" target="_blank" rel="noopener noreferrer">see the demo</a> and <a href="https://arxiv.org/abs/2510.15963" target="_blank" rel="noopener noreferrer">read the paper</a>!
                                 </p>
                                 <p className="hero-description">
-                                    At Amazon, I built a chatbot and MCP servers using Java and TypeScript that reduced ticket debugging time by 80%
-                                    for our organization, and designed serverless pipelines that handle 350M+ daily transactions with minimal overhead.
-                                </p>
-                                <p className="hero-description">
-                                    In research, I'm working with Prof. Mayur Naik on computer vision for robotics. We developed SGClip,
-                                    a model that helps robots understand complex visual scenes by creating structured representations.
-                                    Our work is being submitted to NeurIPS 2025.
+                                    Previously, I was a Software Engineer Intern at <strong>Amazon</strong> (Summer 2025), where I built chatbots and MCP servers in Java and TypeScript that reduced ticket debugging time by <strong>80%</strong>, and designed serverless pipelines handling 350M+ daily transactions.
                                 </p>
                                 <p className="hero-description">
                                     Always excited to connect with fellow engineers, researchers, and anyone passionate about building impactful technology. Let's chat!
@@ -32,19 +28,19 @@ export default function Hero() {
                             <img src="/mattk.jpeg" alt="Matthew Kuo" className="profile-photo" />
                             <div className="hero-contact">
                                 <a href="mailto:mkuo@seas.upenn.edu" className="hero-contact-link">
-                                    <span className="hero-contact-icon">✉️</span>
+                                    <Mail className="hero-contact-icon" strokeWidth={2.5} />
                                     <span className="hero-contact-label">Email</span>
                                 </a>
                                 <a href="https://www.linkedin.com/in/kuomat/" target="_blank" rel="noreferrer" className="hero-contact-link">
-                                    <span className="hero-contact-icon">💼</span>
+                                    <Linkedin className="hero-contact-icon" strokeWidth={2.5} />
                                     <span className="hero-contact-label">LinkedIn</span>
                                 </a>
                                 <a href="https://github.com/kuomat" target="_blank" rel="noreferrer" className="hero-contact-link">
-                                    <span className="hero-contact-icon">💻</span>
+                                    <Github className="hero-contact-icon" strokeWidth={2.5} />
                                     <span className="hero-contact-label">GitHub</span>
                                 </a>
                                 <a href="/resume.pdf" target="_blank" rel="noreferrer" className="hero-contact-link">
-                                    <span className="hero-contact-icon">📄</span>
+                                    <FileText className="hero-contact-icon" strokeWidth={2.5} />
                                     <span className="hero-contact-label">Resume</span>
                                 </a>
                             </div>

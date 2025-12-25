@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -85,8 +85,10 @@ button:focus-visible {
 }
 
 .section-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 2rem;
   margin: 0 0 24px;
+  font-weight: 700;
 }
 
 /* Nav */
@@ -119,6 +121,7 @@ button:focus-visible {
 }
 
 .brand-mark {
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 800;
   font-size: 1.2rem;
   padding: 8px 12px;
@@ -176,20 +179,19 @@ button:focus-visible {
   height: 320px;
   border-radius: 50%;
   object-fit: cover;
-  border: 6px solid transparent;
-  background: linear-gradient(var(--bg), var(--bg)) padding-box,
-    linear-gradient(135deg, var(--brand), var(--brand-2)) border-box;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    0 25px 80px rgba(124, 92, 255, 0.15),
-    0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .profile-photo:hover {
   transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
   box-shadow:
-    0 35px 100px rgba(124, 92, 255, 0.2),
-    0 15px 40px rgba(0, 0, 0, 0.4);
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
 .hero-contact {
@@ -224,6 +226,14 @@ button:focus-visible {
 
 .hero-contact-icon {
   font-size: 1.4rem;
+  width: 24px;
+  height: 24px;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.hero-contact-link:hover .hero-contact-icon {
+  color: var(--brand-2);
 }
 
 .hero-contact-label {
@@ -260,6 +270,7 @@ button:focus-visible {
 }
 
 .hero-name {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 4.8rem;
   line-height: 1.05;
   margin: 0 0 24px;
@@ -272,7 +283,7 @@ button:focus-visible {
 }
 
 .hero-title {
-  font-size: 2.6rem;
+  font-size: 1.8rem;
   line-height: 1.25;
   margin: 0 0 40px;
   color: var(--text);
@@ -281,7 +292,7 @@ button:focus-visible {
 }
 
 .hero-intro {
-  max-width: 580px;
+  max-width: 540px;
 }
 
 @media (max-width: 768px) {
@@ -318,8 +329,13 @@ button:focus-visible {
 .hero-description {
   color: var(--text);
   font-size: 1.1rem;
-  line-height: 1.7;
+  line-height: 1.75;
   margin: 0 0 12px;
+}
+
+.hero-description strong {
+  font-weight: 600;
+  color: var(--text);
 }
 
 .hero-description:last-child {
@@ -405,12 +421,12 @@ button:focus-visible {
 }
 
 .project-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
   margin: 0;
   line-height: 1.2;
-  font-family: 'JetBrains Mono', monospace;
   letter-spacing: -0.5px;
 }
 
@@ -666,6 +682,7 @@ button:focus-visible {
 }
 
 .experience-role {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--text);

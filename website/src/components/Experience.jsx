@@ -60,7 +60,7 @@ export default function Experience() {
             description: 'Built high-throughput MCP servers and a Bedrock-powered chatbot that improves internal tooling efficiency. Designed serverless ETL pipelines handling 350M+ daily checkouts with zero operational overhead, enabling massive scale.'
         },
         {
-            company: 'AI Research Lab (Prof. Mayur Naik)',
+            company: 'Google X AI Research Lab (Prof. Mayur Naik)',
             role: 'Deep Learning Researcher',
             period: 'Mar 2024 – Present',
             location: 'Philadelphia, PA',
@@ -82,7 +82,7 @@ export default function Experience() {
             description: 'Deployed GPT-powered negotiation chatbots enabling dynamic price simulations for 70+ users. Migrated 20+ endpoints to tRPC and implemented Redis caching, boosting offer relevance by 30% and reducing read latency by 35%.'
         },
         {
-            company: 'Google X CIS 7000: Large Language Models',
+            company: 'CIS 7000: Large Language Models',
             role: 'Teaching Assistant',
             period: 'Jun 2024 – Dec 2024',
             location: 'Philadelphia, PA',
