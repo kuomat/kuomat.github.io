@@ -11,7 +11,6 @@ export default function Nav() {
                 <ul className="nav-links">
                     <li><NavLink to="/experience" className={({ isActive }) => isActive ? 'active' : undefined}>Experience</NavLink></li>
                     <li><NavLink to="/projects" className={({ isActive }) => isActive ? 'active' : undefined}>Projects</NavLink></li>
-                    <li><NavLink to="/skills" className={({ isActive }) => isActive ? 'active' : undefined}>Skills</NavLink></li>
                 </ul>
             </nav>
         </header>

@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import ExperiencePage from './pages/ExperiencePage.jsx'
-import SkillsPage from './pages/SkillsPage.jsx'
 import './App.css'
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
         </Routes>
       </main>
       <Footer />
