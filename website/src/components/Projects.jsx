@@ -1,8 +1,44 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 
-function ProjectCard({ title, description, tags, images }) {
+function ProjectCard({ title, description, tags, images, index }) {
+    const cardRef = useRef(null)
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true)
+                    } else {
+                        // Reset animation when scrolling away
+                        setIsVisible(false)
+                    }
+                })
+            },
+            {
+                threshold: 0.3, // Trigger when 30% of the card is visible
+                rootMargin: '0px'
+            }
+        )
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current)
+        }
+
+        return () => {
+            if (cardRef.current) {
+                observer.unobserve(cardRef.current)
+            }
+        }
+    }, [])
+
     return (
-        <article className="project-card">
+        <article
+            ref={cardRef}
+            className={`project-card ${isVisible ? 'in-view' : ''}`}
+            data-index={index}
+        >
             <div className="project-header">
                 <h3 className="project-title">{title}</h3>
             </div>
@@ -12,16 +48,28 @@ function ProjectCard({ title, description, tags, images }) {
                     {tags?.length && (
                         <div className="project-tags">
                             {tags.map((tag) => (
-                                <span key={tag} className="project-tag">{tag}</span>
+                                <span
+                                    key={tag}
+                                    className="project-tag"
+                                >
+                                    {tag}
+                                </span>
                             ))}
                         </div>
                     )}
                 </div>
                 {images?.length && (
                     <div className="project-images">
-                        {images.map((image, index) => (
-                            <div key={index} className="project-image">
-                                <img src={image} alt={`${title} screenshot ${index + 1}`} />
+                        {images.map((image, imageIndex) => (
+                            <div
+                                key={imageIndex}
+                                className="project-image"
+                            >
+                                <img
+                                    src={image}
+                                    alt={`${title} screenshot ${imageIndex + 1}`}
+                                    onClick={() => window.openImageModal?.(image, title)}
+                                />
                             </div>
                         ))}
                     </div>
@@ -31,7 +79,66 @@ function ProjectCard({ title, description, tags, images }) {
     )
 }
 
+function ImageModal({ image, title, isOpen, onClose }) {
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                onClose()
+            }
+        }
+
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscape)
+            document.body.style.overflow = 'hidden'
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape)
+            document.body.style.overflow = ''
+        }
+    }, [isOpen, onClose])
+
+    if (!isOpen || !image) return null
+
+    return (
+        <div className="image-modal-overlay" onClick={onClose} style={{ display: isOpen ? 'flex' : 'none' }}>
+            <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="image-modal-close" onClick={onClose} aria-label="Close">
+                    ×
+                </button>
+                <img src={image} alt={title} className="image-modal-image" />
+            </div>
+        </div>
+    )
+}
+
 export default function Projects() {
+    const [modalImage, setModalImage] = useState(null)
+    const [modalTitle, setModalTitle] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const openImageModal = (image, title) => {
+        setModalImage(image)
+        setModalTitle(title)
+        setIsModalOpen(true)
+    }
+
+    const closeImageModal = () => {
+        setIsModalOpen(false)
+        setTimeout(() => {
+            setModalImage(null)
+            setModalTitle('')
+        }, 300)
+    }
+
+    // Expose function globally for image clicks
+    useEffect(() => {
+        window.openImageModal = openImageModal
+        return () => {
+            delete window.openImageModal
+        }
+    }, [])
+
     const projects = [
         {
             title: 'Traffic Slice',
@@ -54,18 +161,20 @@ export default function Projects() {
     ]
 
     return (
-        <section id="projects" className="section" aria-labelledby="projects-title">
-            <div className="container">
-                <h2 id="projects-title" className="section-title">Featured Projects</h2>
-                <p className="section-subtitle">
-                    Full-stack applications, distributed systems, and AI research projects
-                </p>
+        <>
+            <div className="projects-container">
                 <div className="projects-grid">
-                    {projects.map((project) => (
-                        <ProjectCard key={project.title} {...project} />
+                    {projects.map((project, index) => (
+                        <ProjectCard key={project.title} {...project} index={index} />
                     ))}
                 </div>
             </div>
-        </section>
+            <ImageModal
+                image={modalImage}
+                title={modalTitle}
+                isOpen={isModalOpen}
+                onClose={closeImageModal}
+            />
+        </>
     )
 }

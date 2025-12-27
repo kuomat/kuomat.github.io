@@ -9,7 +9,6 @@ export default function Nav() {
                     <span className="brand-mark">MK</span>
                 </Link>
                 <ul className="nav-links">
-                    <li><NavLink to="/experience" className={({ isActive }) => isActive ? 'active' : undefined}>Experience</NavLink></li>
                     <li><NavLink to="/projects" className={({ isActive }) => isActive ? 'active' : undefined}>Projects</NavLink></li>
                 </ul>
             </nav>
