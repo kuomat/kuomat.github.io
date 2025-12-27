@@ -16,7 +16,6 @@ export default function Hero() {
                                 </p>
                             </div>
 
-                            {/* Experience Grid */}
                             <div className="experience-grid">
                                 <div className="experience-item-grid">
                                     <div className="experience-logo-wrapper">
